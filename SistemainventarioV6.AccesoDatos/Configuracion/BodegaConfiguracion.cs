@@ -12,8 +12,7 @@ namespace SistemainventarioV6.AccesoDatos.Configuracion
 {
     public class BodegaConfiguracion : IEntityTypeConfiguration<Bodega>
     {
-        private object x;
-
+      
         public void Configure(EntityTypeBuilder <Bodega>builder)
             {
             builder.Property(x => x.Id) .IsRequired();

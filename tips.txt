@@ -4,3 +4,5 @@ add-migration AgregarMigracionIdentidad
 TrustServerCertificate=True
 
 update-database
+
+private object x;
