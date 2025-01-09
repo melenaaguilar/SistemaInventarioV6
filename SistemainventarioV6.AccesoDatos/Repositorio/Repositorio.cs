@@ -30,7 +30,8 @@ namespace SistemainventarioV6.AccesoDatos.Repositorio
             return await dbSet.FindAsync(id); // select * from tabla (solo por id)
         }
 
-        public async Task<IEnumerable<T>> ObtenerTodos(Expression<Func<T, bool>> filtro = null, Func<IQueryable<T>, IOrderedQueryable<T>> orderby = null, string IncluirPropiedades = null, bool istracking = true)
+        public async Task<IEnumerable<T>> ObtenerTodos(
+            Expression<Func<T, bool>> filtro = null, Func<IQueryable<T>, IOrderedQueryable<T>> orderby = null,string IncluirPropiedades = null, bool istracking = true)
         {
             IQueryable<T> query = dbSet;
             if (filtro != null)
