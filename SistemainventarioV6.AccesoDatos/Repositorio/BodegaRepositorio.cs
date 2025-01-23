@@ -13,20 +13,21 @@ namespace SistemainventarioV6.AccesoDatos.Repositorio
     public class BodegaRepositorio : Repositorio<Bodega>, IBodegaRepositorio
     {
         private readonly ApplicationDbContext _db;
-        public BodegaRepositorio(ApplicationDbContext db):base(db)
+        public BodegaRepositorio(ApplicationDbContext db) : base(db)
         {
             _db = db;
         }
 
         void IBodegaRepositorio.Actualizar(Bodega bodega)
         {
-           var bodegaDb= _db.Bodegas.FirstOrDefault(b=>b.Id==bodega.Id);
-            if (bodegaDb !=null)
+            var bodegaDb = _db.Bodegas.FirstOrDefault(b => b.Id == bodega.Id);
+            if (bodegaDb != null)
             {
-                bodegaDb.Nombre = bodegaDb.Nombre;
-                bodegaDb.Descripcion= bodegaDb.Descripcion;
-                bodegaDb.Estado= bodegaDb.Estado;
+                bodegaDb.Nombre = bodega.Nombre;
+                bodegaDb.Descripcion = bodega.Descripcion;
+                bodegaDb.Estado = bodega.Estado;
                 _db.SaveChanges();
             }
+        }
     }
 }

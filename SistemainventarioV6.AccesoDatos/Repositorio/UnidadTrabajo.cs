@@ -12,6 +12,9 @@ namespace SistemainventarioV6.AccesoDatos.Repositorio
     {        
         private readonly ApplicationDbContext _db;
         public IBodegaRepositorio Bodega { get; private set; }
+
+        /*IBodegaRepositorio IUnidadTrabajo.Bodega => throw new NotImplementedException();*/
+
         public UnidadTrabajo(ApplicationDbContext db)
         {
             _db = db;
