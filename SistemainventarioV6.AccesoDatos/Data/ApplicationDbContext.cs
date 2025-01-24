@@ -12,8 +12,8 @@ namespace SistemainventarioV6.AccesoDatos.Data
             : base(options)
         {
         }
-
-        public DbSet<Bodega> Bodegas { get; set; }
+         public DbSet<Bodega> Bodegas { get; set; }
+        public DbSet<Categoria> Categorias { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
