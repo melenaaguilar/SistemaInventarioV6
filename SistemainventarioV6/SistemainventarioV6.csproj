@@ -2,7 +2,6 @@
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
-    <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <UserSecretsId>aspnet-SistemainventarioV6-7490f075-25f9-42fe-878b-d2bb87377d96</UserSecretsId>
   </PropertyGroup>
@@ -21,6 +20,10 @@
     <ProjectReference Include="..\SistemainventarioV6.AccesoDatos\SistemainventarioV6.AccesoDatos.csproj" />
     <ProjectReference Include="..\SistemainventarioV6.Modelos\SistemainventarioV6.Modelos.csproj" />
     <ProjectReference Include="..\SistemainventarioV6.Utilidades\SistemainventarioV6.Utilidades.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\imagenes\producto\" />
   </ItemGroup>
 
 </Project>

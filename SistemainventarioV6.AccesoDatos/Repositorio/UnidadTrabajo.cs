@@ -1,5 +1,6 @@
 ﻿using SistemainventarioV6.AccesoDatos.Data;
 using SistemainventarioV6.AccesoDatos.Repositorio.IRepositorio;
+using SistemainventarioV6.Modelos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +15,7 @@ namespace SistemainventarioV6.AccesoDatos.Repositorio
         public IBodegaRepositorio Bodega { get; private set; }
         public ICategoriaRepositorio Categoria { get; private set; }
         public IMarcaRepositorio Marca { get; private set; }
+        public IProductoRepositorio Producto { get; private set; }
 
         /*IBodegaRepositorio IUnidadTrabajo.Bodega => throw new NotImplementedException();*/
 
@@ -23,6 +25,7 @@ namespace SistemainventarioV6.AccesoDatos.Repositorio
             Bodega = new BodegaRepositorio(_db);
             Categoria = new CategoriaRepositorio(_db);
             Marca = new MarcaRepositorio(_db);
+            Producto = new ProductoRepositorio(_db);
 
         }
         public void Dispose()
