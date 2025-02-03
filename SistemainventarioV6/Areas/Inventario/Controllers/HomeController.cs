@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using SistemainventarioV6.AccesoDatos.Repositorio;
+using SistemainventarioV6.Modelos;
 using System.Diagnostics;
 
 namespace SistemainventarioV6.Areas.Inventario.Controllers
@@ -7,15 +9,19 @@ namespace SistemainventarioV6.Areas.Inventario.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly IUnidadTrabajo _UnidadTrabajo;
 
-        public HomeController(ILogger<HomeController> logger)
+
+        public HomeController(ILogger<HomeController> logger, IUnidadTrabajo unidadTrabajo)
         {
             _logger = logger;
+            _UnidadTrabajo = unidadTrabajo;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            IEnumerable<Producto> productolista = await _UnidadTrabajo.Producto.ObtenerTodos();
+            return View(productolista);
         }
 
         public IActionResult Privacy()
