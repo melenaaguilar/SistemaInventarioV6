@@ -14,6 +14,8 @@ using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
+using SistemainventarioV6.AccesoDatos.Repositorio;
+using SistemainventarioV6.Utilidades;
 
 namespace SistemainventarioV6.Areas.Identity.Pages.Account
 {
@@ -21,11 +23,13 @@ namespace SistemainventarioV6.Areas.Identity.Pages.Account
     {
         private readonly SignInManager<IdentityUser> _signInManager;
         private readonly ILogger<LoginModel> _logger;
+        private readonly IUnidadTrabajo _unidadTrabajo;
 
-        public LoginModel(SignInManager<IdentityUser> signInManager, ILogger<LoginModel> logger)
+        public LoginModel(SignInManager<IdentityUser> signInManager, ILogger<LoginModel> logger, IUnidadTrabajo unidadTrabajo)
         {
             _signInManager = signInManager;
             _logger = logger;
+            _unidadTrabajo = unidadTrabajo;
         }
 
         /// <summary>
@@ -114,7 +118,11 @@ namespace SistemainventarioV6.Areas.Identity.Pages.Account
                 var result = await _signInManager.PasswordSignInAsync(Input.Email, Input.Password, Input.RememberMe, lockoutOnFailure: false);
                 if (result.Succeeded)
                 {
-                    _logger.LogInformation("User logged in.");
+                    var usuario = await _unidadTrabajo.UsuarioAplicacion.obtenerPrimero(u => u.UserName == Input.Email);
+                    //var carroLista = await _unidadTrabajo.CarroCompra.ObtenerTodos(c => c.UsuarioAplicacionId == usuario.Id);
+                    //var numeroProductos = carroLista.Count();
+                    //HttpContext.Session.SetInt32(DS.ssCarroCompras, numeroProductos);
+                    //_logger.LogInformation("User logged in.");
                     return LocalRedirect(returnUrl);
                 }
                 if (result.RequiresTwoFactor)
