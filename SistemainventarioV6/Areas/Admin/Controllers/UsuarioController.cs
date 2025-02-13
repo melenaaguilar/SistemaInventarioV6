@@ -8,7 +8,7 @@ using SistemainventarioV6.Utilidades;
 namespace SistemainventarioV6.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    //[Authorize(Roles = DS.Role_Admin)]
+    [Authorize(Roles = DS.Role_Admin)]
     public class UsuarioController : Controller
     {
 

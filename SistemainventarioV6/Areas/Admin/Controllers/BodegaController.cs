@@ -7,6 +7,7 @@ using SistemainventarioV6.AccesoDatos.Repositorio;
 namespace SistemainventarioV6.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = DS.Role_Admin)]
     public class BodegaController : Controller
     {
         private readonly IUnidadTrabajo _UnidadTrabajo;

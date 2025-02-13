@@ -10,6 +10,7 @@ using SistemainventarioV6.AccesoDatos.Repositorio;
 namespace SistemainventarioV6.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = DS.Role_Admin + "," + DS.Role_Inventario)]
     public class ProductoController : Controller
     {
         private readonly IUnidadTrabajo _UnidadTrabajo;
