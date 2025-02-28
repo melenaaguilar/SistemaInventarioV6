@@ -17,7 +17,11 @@ namespace SistemainventarioV6.AccesoDatos.Repositorio
         public IMarcaRepositorio Marca { get; private set; }
         public IProductoRepositorio Producto { get; private set; }
         public IUsuarioAplicacionRepositorio UsuarioAplicacion { get; private set; }
-        
+        public IBodegaProductoRepositorio BodegaProducto { get; private set; }
+        public IInventarioRepositorio Inventario { get; private set; }
+        public IInventarioDetalleRepositorio InventarioDetalle { get; private set; }
+        public IKardexInventarioRepositorio KardexInventario { get; private set; }
+
         /*IBodegaRepositorio IUnidadTrabajo.Bodega => throw new NotImplementedException();*/
 
         public UnidadTrabajo(ApplicationDbContext db)
@@ -28,6 +32,10 @@ namespace SistemainventarioV6.AccesoDatos.Repositorio
             Marca = new MarcaRepositorio(_db);
             Producto = new ProductoRepositorio(_db);
             UsuarioAplicacion = new UsuarioAplicacionRepositorio(_db);
+            BodegaProducto = new BodegaProductoRepositorio(_db);
+            Inventario = new InventarioRepositorio(_db);
+            InventarioDetalle = new InventarioDetalleRepositorio(_db);
+            KardexInventario = new KardexInventarioRepositorio(_db);
 
         }
         public void Dispose()
