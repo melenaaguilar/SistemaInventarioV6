@@ -18,6 +18,7 @@ namespace SistemainventarioV6.AccesoDatos.Repositorio
         IInventarioRepositorio Inventario { get; }
         IInventarioDetalleRepositorio InventarioDetalle { get; }
         IKardexInventarioRepositorio KardexInventario { get; }
+        ICompaniaRepositorio Compania { get; }
         Task Guardar();
 
 
