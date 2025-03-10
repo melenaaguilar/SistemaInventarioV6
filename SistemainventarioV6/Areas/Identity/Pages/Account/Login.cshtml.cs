@@ -119,10 +119,10 @@ namespace SistemainventarioV6.Areas.Identity.Pages.Account
                 if (result.Succeeded)
                 {
                     var usuario = await _unidadTrabajo.UsuarioAplicacion.obtenerPrimero(u => u.UserName == Input.Email);
-                    //var carroLista = await _unidadTrabajo.CarroCompra.ObtenerTodos(c => c.UsuarioAplicacionId == usuario.Id);
-                    //var numeroProductos = carroLista.Count();
-                    //HttpContext.Session.SetInt32(DS.ssCarroCompras, numeroProductos);
-                    //_logger.LogInformation("User logged in.");
+                    var carroLista = await _unidadTrabajo.CarroCompra.ObtenerTodos(c => c.UsuarioAplicacionId == usuario.Id);
+                    var numeroProductos = carroLista.Count();
+                    HttpContext.Session.SetInt32(DS.ssCarroCompras, numeroProductos);
+                    _logger.LogInformation("User logged in.");
                     return LocalRedirect(returnUrl);
                 }
                 if (result.RequiresTwoFactor)
