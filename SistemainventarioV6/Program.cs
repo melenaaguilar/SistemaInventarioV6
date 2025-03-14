@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using SistemainventarioV6.AccesoDatos.Data;
 using SistemainventarioV6.AccesoDatos.Repositorio;
 using SistemainventarioV6.Utilidades;
+using Stripe;
 
 internal class Program
 {
@@ -51,6 +52,7 @@ internal class Program
             options.Cookie.IsEssential = true;
         });
 
+        builder.Services.Configure<StripeSettings>(builder.Configuration.GetSection("Stripe"));
         var app = builder.Build();
 
         // Configure the HTTP request pipeline.
@@ -67,6 +69,8 @@ internal class Program
 
         app.UseHttpsRedirection();
         app.UseStaticFiles();
+
+        StripeConfiguration.ApiKey = builder.Configuration.GetSection("Stripe:SecretKey").Get<string>();
 
         app.UseRouting();
         app.UseSession();
